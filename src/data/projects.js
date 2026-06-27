@@ -36,11 +36,11 @@ export const caseStudies = [
     },
     hoverMetric: '65 commits · live on Vercel',
     cta: 'Want this kind of finish on your product?',
-    cover: { src: '/work/reel-home.png', alt: 'REEL home screen — an editorial Now Showing mosaic on cream paper.' },
+    cover: { src: '/work/reel-home.webp', alt: 'REEL home screen — an editorial Now Showing mosaic on cream paper.' },
     gallery: [
-      { src: '/work/reel-detail.png', alt: 'REEL film detail — a burgundy split-screen with the synopsis set as a pull-quote.' },
-      { src: '/work/reel-seats.png', alt: 'REEL seat selection — an architectural blueprint floor plan with a live price ticker.' },
-      { src: '/work/reel-eticket.png', alt: 'REEL e-ticket — a perforated stub with a real scannable QR code.' },
+      { src: '/work/reel-detail.webp', alt: 'REEL film detail — a burgundy split-screen with the synopsis set as a pull-quote.' },
+      { src: '/work/reel-seats.webp', alt: 'REEL seat selection — an architectural blueprint floor plan with a live price ticker.' },
+      { src: '/work/reel-eticket.webp', alt: 'REEL e-ticket — a perforated stub with a real scannable QR code.' },
     ],
   },
   {
@@ -75,9 +75,9 @@ export const caseStudies = [
     },
     hoverMetric: '221 commits · 19 modules · live',
     cta: 'Need someone who ships and documents at this pace?',
-    cover: { src: '/work/react-playground-home.png', alt: 'React Playground home — the module track and progress dashboard.' },
+    cover: { src: '/work/react-playground-home.webp', alt: 'React Playground home — the module track and progress dashboard.' },
     gallery: [
-      { src: '/work/react-playground-module.png', alt: 'A React Playground module with a live Sandpack editor and an instant quiz.' },
+      { src: '/work/react-playground-module.webp', alt: 'A React Playground module with a live Sandpack editor and an instant quiz.' },
     ],
   },
   {
@@ -111,7 +111,10 @@ export const caseStudies = [
     },
     hoverMetric: '32 commits · zero servers · private by design',
     cta: 'Looking for someone who designs for privacy by default?',
-    cover: { src: '/work/jobfit-card.png', alt: 'JobFit — a privacy-first Chrome extension that scores resume-to-job fit.' },
+    // No web UI to screenshot honestly — JobFit is an extension. Its case study renders a
+    // designed architecture visual (the single trust boundary) instead of a fake mockup.
+    cover: null,
+    designedVisual: 'jobfit-boundary',
     gallery: [],
   },
 ]
