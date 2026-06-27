@@ -38,7 +38,7 @@ export function Header({ onOpenCommand }) {
             type="button"
             onClick={onOpenCommand}
             className="hidden items-center gap-1 rounded border border-rule px-2 py-1 text-xs text-ink-faint transition-colors hover:border-ink-faint hover:text-ink sm:inline-flex"
-            aria-label="Open command palette"
+            aria-label="⌘K, open command palette"
             aria-keyshortcuts="Meta+K Control+K"
           >
             <span aria-hidden="true">⌘</span>K
