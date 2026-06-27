@@ -1,0 +1,19 @@
+[
+  { "date": "2026-06-26T17:13:11Z", "repo": "jobfit", "type": "fix", "message": "surface the real Gemini 429 cause, auto-retry, and allow a model switch" },
+  { "date": "2026-06-26T16:48:40Z", "repo": "jobfit", "type": "feat", "message": "add the brand icons — a green square with a white checkmark" },
+  { "date": "2026-06-26T08:02:12Z", "repo": "jobfit", "type": "feat", "message": "manual click-to-select fallback for when job boards change their markup" },
+  { "date": "2026-06-26T07:58:58Z", "repo": "jobfit", "type": "feat", "message": "one-click autofill of your details into any application form" },
+  { "date": "2026-06-26T07:30:31Z", "repo": "jobfit", "type": "feat", "message": "keep a searchable, capped history of analyzed jobs" },
+  { "date": "2026-06-26T07:23:43Z", "repo": "jobfit", "type": "feat", "message": "switch from the paid Anthropic API to Gemini's free tier" },
+  { "date": "2026-06-25T17:07:36Z", "repo": "reel", "type": "feat", "message": "present the programme as an asymmetric editorial mosaic" },
+  { "date": "2026-06-25T17:07:36Z", "repo": "reel", "type": "fix", "message": "restore full-colour posters, refine the seat map and ticket" },
+  { "date": "2026-06-25T15:42:56Z", "repo": "reel", "type": "deploy", "message": "deployed to Vercel", "url": "https://cinebook-advanced.vercel.app" },
+  { "date": "2026-06-25T14:07:35Z", "repo": "react-playground", "type": "deploy", "message": "deployed to Vercel", "url": "https://my-react-project-omega-two.vercel.app" },
+  { "date": "2026-06-25T13:47:13Z", "repo": "react-playground", "type": "chore", "message": "release v3.0.0" },
+  { "date": "2026-06-25T13:41:42Z", "repo": "react-playground", "type": "feat", "message": "add Testing + Internals axes to the readiness dashboard" },
+  { "date": "2026-06-25T13:17:15Z", "repo": "react-playground", "type": "feat", "message": "unify the spaced-repetition review queue" },
+  { "date": "2026-06-24T09:44:34Z", "repo": "react-playground", "type": "init", "message": "scaffold the app — module-00: Welcome and the 6-step rhythm" },
+  { "date": "2026-06-23T07:36:25Z", "repo": "reel", "type": "docs", "message": "capture the UI screenshots" },
+  { "date": "2026-06-23T07:36:24Z", "repo": "reel", "type": "feat", "message": "implement the multi-step booking flow with a QR e-ticket" },
+  { "date": "2026-06-23T07:36:24Z", "repo": "reel", "type": "feat", "message": "add the film detail page and trailer modal" }
+]
