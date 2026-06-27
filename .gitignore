@@ -39,3 +39,12 @@ pnpm-debug.log*
 # Misc
 coverage/
 .cache/
+
+# Local tooling / scratch
+.playwright-mcp/
+.impeccable/
+/screenshots/
+/*-desktop.png
+/*-tablet.png
+/*-mobile.png
+/task*.png

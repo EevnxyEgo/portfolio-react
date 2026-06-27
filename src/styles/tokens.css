@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+/*
+  The locked design system, as Tailwind v4 theme tokens. Tailwind emits each of these
+  as a `:root` CSS custom property AND generates matching utilities (bg-paper, text-ink,
+  border-rule, font-display, …). Never hardcode a hex or arbitrary spacing outside this file.
+*/
+@theme {
+  /* Palette — warm "Paper" */
+  --color-paper: #f4f1ea;
+  --color-raised: #fffdf8;
+  --color-ink: #16140f;
+  --color-ink-soft: #5e5749;
+  --color-ink-faint: #8a8474;
+  --color-shipped: #0f6b47;
+  --color-shipped-bright: #1fa971;
+  --color-rule: #ded7c7;
+
+  /* Type */
+  --font-display: "Newsreader", ui-serif, Georgia, serif;
+  --font-body: "Hanken Grotesk", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
+
+  /* Editorial display scale */
+  --text-display: clamp(2.4rem, 1.4rem + 4.4vw, 4.5rem);
+  --text-display--line-height: 1.04;
+  --text-section: clamp(1.6rem, 1.2rem + 1.6vw, 2.25rem);
+  --text-section--line-height: 1.12;
+}
