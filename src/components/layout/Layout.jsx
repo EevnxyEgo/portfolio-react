@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, Suspense } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import { Header } from './Header.jsx'
 import { Footer } from './Footer.jsx'
@@ -25,7 +25,9 @@ export function Layout() {
       </a>
       <Header onOpenCommand={openPalette} />
       <main id="main">
-        <Outlet />
+        <Suspense fallback={<div className="min-h-[60vh]" aria-hidden="true" />}>
+          <Outlet />
+        </Suspense>
       </main>
       <Footer />
       <CommandPalette open={open} onClose={closePalette} />
