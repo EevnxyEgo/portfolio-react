@@ -24,3 +24,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     </HelmetProvider>
   </React.StrictMode>,
 )
+
+// A small hello for the developers who actually open devtools.
+console.log(
+  '%cArsenius Audley%c\nFull-stack developer who finishes what he starts.\n\nFound the console — try ⌘K / Ctrl+K anywhere to jump around.\nSource: https://github.com/EevnxyEgo',
+  'font: 500 20px Newsreader, serif; color: #0f6b47;',
+  'font: 13px JetBrains Mono, monospace; color: #5e5749;',
+)
