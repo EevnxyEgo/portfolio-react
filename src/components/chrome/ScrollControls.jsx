@@ -20,11 +20,11 @@ export function ScrollControls() {
 
   return (
     <div
+      {...(!visible && { inert: '' })}
       className={
         'fixed bottom-5 right-5 z-40 flex flex-col overflow-hidden rounded-full border border-rule bg-raised transition-opacity duration-300 ' +
         (visible ? 'opacity-100' : 'pointer-events-none opacity-0')
       }
-      aria-hidden={!visible}
     >
       <button
         type="button"

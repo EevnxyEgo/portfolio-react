@@ -19,7 +19,7 @@ export function Header({ onOpenCommand }) {
         <Link
           to="/"
           className="font-mono text-sm tracking-[0.2em] text-ink"
-          aria-label={`${profile.shortName}, home`}
+          aria-label={`${profile.initials} — ${profile.shortName}, home`}
         >
           {profile.initials}
         </Link>
