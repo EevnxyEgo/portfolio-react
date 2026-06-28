@@ -31,6 +31,15 @@ export default function Contact() {
 
           <Reveal delay={0.08}>
             <aside className="flex flex-col gap-5">
+              <img
+                src="/photos/contact.webp"
+                width="680"
+                height="1020"
+                alt="Arsenius Audley in a suit, arms crossed, against a light studio backdrop."
+                className="w-full max-w-[260px] rounded-xl border border-rule"
+                loading="lazy"
+                decoding="async"
+              />
               <p className="font-mono text-xs tracking-[0.1em] text-ink-faint">direct</p>
               <a
                 href={`mailto:${profile.email}`}

@@ -83,6 +83,39 @@ export default function Home() {
         </Reveal>
         <SelectedBuilds />
       </section>
+
+      <section className="mx-auto max-w-5xl px-6 pb-16 sm:px-10" aria-labelledby="about-teaser-heading">
+        <Reveal>
+          <div className="flex flex-col items-start gap-6 rounded-xl border border-rule bg-raised p-6 sm:flex-row sm:items-center sm:gap-8 sm:p-8">
+            <img
+              src="/photos/home.webp"
+              width="480"
+              height="720"
+              alt="Arsenius Audley, headshot in a suit against a light studio backdrop."
+              className="w-28 shrink-0 rounded-xl border border-rule sm:w-36"
+              loading="lazy"
+              decoding="async"
+            />
+            <div>
+              <h2 id="about-teaser-heading" className="font-display text-section text-ink">
+                The person behind the ships
+              </h2>
+              <p className="mt-2 max-w-[52ch] text-ink-soft">
+                I&rsquo;m Arsenius — a full-stack developer who builds and ships complete products,
+                design to deploy. If that&rsquo;s what your team needs, let&rsquo;s talk.
+              </p>
+              <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 font-mono text-sm">
+                <Link to="/about" className="text-shipped transition-opacity hover:opacity-80">
+                  read my story →
+                </Link>
+                <Link to="/contact" className="text-ink-soft transition-colors hover:text-ink">
+                  get in touch →
+                </Link>
+              </div>
+            </div>
+          </div>
+        </Reveal>
+      </section>
     </>
   )
 }

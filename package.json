@@ -10,6 +10,7 @@
     "preview": "vite preview",
     "images": "node scripts/optimize-images.mjs",
     "favicon": "node scripts/make-favicon.mjs",
+    "photos": "node scripts/optimize-photos.mjs",
     "test": "vitest run",
     "test:watch": "vitest"
   },
