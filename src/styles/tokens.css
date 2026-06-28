@@ -1,31 +1,31 @@
 @import "tailwindcss";
 
 /*
-  The locked design system, as Tailwind v4 theme tokens. Tailwind emits each of these
-  as a `:root` CSS custom property AND generates matching utilities (bg-paper, text-ink,
-  border-rule, font-display, …). Never hardcode a hex or arbitrary spacing outside this file.
+  "Night Shipyard" — a warm, dark, tactile system. Token names are kept stable so the
+  whole site re-themes from here; the values now describe a warm-dark world.
+  (paper = base canvas, ink = bone text, shipped = jade signal, amber = second accent.)
 */
 @theme {
-  /* Palette — warm "Paper" */
-  --color-paper: #f4f1ea;
-  --color-raised: #fffdf8;
-  --color-ink: #16140f;
-  --color-ink-soft: #5e5749;
-  --color-ink-faint: #726a57;
-  --color-shipped: #0f6b47;
-  --color-shipped-bright: #1fa971;
-  --color-rule: #ded7c7;
-  /* Warm terracotta for form validation only — lives in the paper world, never an AI red. */
-  --color-alert: #a24b2e;
+  /* Palette — warm dark */
+  --color-paper: #14120d; /* base canvas (warm espresso-black) */
+  --color-raised: #1e1b14; /* raised panel */
+  --color-ink: #ece4d2; /* primary text (warm bone) */
+  --color-ink-soft: #b3a88f; /* secondary text */
+  --color-ink-faint: #9a8f73; /* muted labels / mono (passes AA on base + panel) */
+  --color-shipped: #34d399; /* jade — the "shipped" signal accent */
+  --color-shipped-bright: #5ff0bc; /* live indicator */
+  --color-amber: #e6a23c; /* batik gold — second accent, used sparingly */
+  --color-rule: #2e2a20; /* hairline on dark */
+  --color-alert: #e0795a; /* warm terracotta for form validation only */
 
-  /* Type */
-  --font-display: "Newsreader", ui-serif, Georgia, serif;
+  /* Type — characterful grotesque display, no default serif */
+  --font-display: "Bricolage Grotesque Variable", ui-sans-serif, system-ui, sans-serif;
   --font-body: "Hanken Grotesk", system-ui, -apple-system, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
 
-  /* Editorial display scale */
-  --text-display: clamp(2.4rem, 1.4rem + 4.4vw, 4.5rem);
-  --text-display--line-height: 1.04;
-  --text-section: clamp(1.6rem, 1.2rem + 1.6vw, 2.25rem);
-  --text-section--line-height: 1.12;
+  /* Bold editorial display scale */
+  --text-display: clamp(2.6rem, 1.2rem + 5.6vw, 5.25rem);
+  --text-display--line-height: 1.0;
+  --text-section: clamp(1.7rem, 1.2rem + 1.8vw, 2.4rem);
+  --text-section--line-height: 1.1;
 }

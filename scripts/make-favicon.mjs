@@ -1,15 +1,16 @@
-// Generate the favicon from the real Newsreader "A" glyph (exact vector paths, no system-font
-// approximation). Outputs: public/favicon.svg, public/apple-touch-icon.png, public/favicon-32.png.
-// Run with `npm run favicon`.
+// Generate the favicon from the real Bricolage Grotesque "A" glyph (exact vector paths).
+// The Bricolage static TTF is fetched into .raw-images/fonts/ (see README) since the npm
+// package only ships woff2, which opentype.js can't parse.
+// Outputs: public/favicon.svg, public/apple-touch-icon.png, public/favicon-32.png.
 import fs from 'node:fs'
 import opentype from 'opentype.js'
 import sharp from 'sharp'
 
-const FONT = 'node_modules/@fontsource/newsreader/files/newsreader-latin-500-normal.woff'
-const EMERALD = '#0F6B47'
-const PAPER = '#F4F1EA'
+const FONT = '.raw-images/fonts/bricolage.ttf'
+const JADE = '#34d399' // signal accent — favicon ground
+const DARK = '#14120d' // warm base — the letter
 const BOX = 100
-const CAP_TARGET = 58 // cap height as % of the 100-unit box
+const CAP_TARGET = 60 // cap height as % of the 100-unit box
 
 const font = opentype.parse(fs.readFileSync(FONT))
 const glyph = font.charToGlyph('A')
@@ -25,8 +26,8 @@ const d = path.toPathData(2)
 
 const svg = (rx) =>
   `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${BOX} ${BOX}" role="img" aria-label="Arsenius Audley">
-  <rect width="${BOX}" height="${BOX}" rx="${rx}" fill="${EMERALD}"/>
-  <g transform="translate(${tx.toFixed(2)} ${ty.toFixed(2)})"><path d="${d}" fill="${PAPER}"/></g>
+  <rect width="${BOX}" height="${BOX}" rx="${rx}" fill="${JADE}"/>
+  <g transform="translate(${tx.toFixed(2)} ${ty.toFixed(2)})"><path d="${d}" fill="${DARK}"/></g>
 </svg>
 `
 

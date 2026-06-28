@@ -1,66 +1,59 @@
 import { Link } from 'react-router-dom'
+import { ArrowRight } from 'lucide-react'
 import { SeoHead } from '../components/primitives/SeoHead.jsx'
 import { Reveal } from '../components/primitives/Reveal.jsx'
-import { ShipLog } from '../components/shiplog/ShipLog.jsx'
+import { DeployStream } from '../components/shiplog/DeployStream.jsx'
 import { SelectedBuilds } from '../components/work/SelectedBuilds.jsx'
 import { profile } from '../data/profile.js'
-import { caseStudies } from '../data/projects.js'
-import shiplog from '../data/shiplog.json'
-import { bareHost } from '../lib/format.js'
-
-// Build the hero deploy log from real data: each product's deploy event (or latest
-// activity), in chronological order, linking through to its case study.
-function heroLog() {
-  return caseStudies
-    .map((cs) => {
-      const repoEntries = shiplog.filter((e) => e.repo === cs.repo)
-      const deploy = repoEntries.find((e) => e.type === 'deploy')
-      const latest = [...repoEntries].sort((a, b) => Date.parse(b.date) - Date.parse(a.date))[0]
-      const live = Boolean(cs.links.live)
-      return {
-        key: cs.slug,
-        date: (deploy || latest).date,
-        primary: cs.name,
-        secondary: live ? `deployed → ${bareHost(cs.links.live)}` : 'built → load-unpacked extension',
-        shipped: live,
-        to: `/work/${cs.slug}`,
-      }
-    })
-    .sort((a, b) => Date.parse(a.date) - Date.parse(b.date))
-}
 
 export default function Home() {
-  const log = heroLog()
-
   return (
     <>
       <SeoHead path="/" />
 
-      <section className="mx-auto max-w-5xl px-6 pb-20 pt-20 sm:px-10 sm:pt-28">
-        <Reveal>
-          <h1 className="max-w-[16ch] font-display text-display leading-[1.04] tracking-tight text-ink">
-            {profile.thesis}
-          </h1>
-        </Reveal>
-
-        <Reveal delay={0.08}>
-          <p className="mt-6 max-w-[54ch] text-lg leading-relaxed text-ink-soft">{profile.intro}</p>
-        </Reveal>
-
-        <Reveal delay={0.14}>
-          <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-sm">
-            <span className="inline-flex items-center gap-2 text-shipped">
+      <section className="relative mx-auto grid max-w-6xl items-center gap-12 px-6 pb-16 pt-14 sm:px-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12 lg:pb-24 lg:pt-20">
+        <div>
+          <Reveal>
+            <p className="inline-flex items-center gap-2 font-mono text-sm text-shipped">
               <span className="h-2 w-2 rounded-full bg-shipped-bright" aria-hidden="true" />
-              {profile.availability}
-            </span>
-            <span className="text-ink-faint">
-              {profile.stats.shipped} shipped · {profile.stats.liveOnWeb} live · {profile.locationNote}
-            </span>
-          </div>
-        </Reveal>
+              open to work — {profile.locationNote}
+            </p>
+          </Reveal>
 
-        <Reveal delay={0.2} className="mt-10 block max-w-2xl">
-          <ShipLog entries={log} />
+          <Reveal delay={0.06}>
+            <h1 className="mt-5 font-display text-display font-bold leading-[0.98] tracking-[-0.02em] text-ink">
+              Full-stack developer who{' '}
+              <span className="text-shipped">finishes</span> what he starts.
+            </h1>
+          </Reveal>
+
+          <Reveal delay={0.12}>
+            <p className="mt-6 max-w-[48ch] text-lg leading-relaxed text-ink-soft">{profile.intro}</p>
+          </Reveal>
+
+          <Reveal delay={0.18}>
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <Link
+                to="/work"
+                className="inline-flex items-center gap-2 rounded-full bg-shipped px-5 py-2.5 font-mono text-sm text-paper transition-transform hover:-translate-y-0.5"
+              >
+                See the work <ArrowRight size={15} aria-hidden="true" />
+              </Link>
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2 rounded-full border border-ink-soft px-5 py-2.5 font-mono text-sm text-ink transition-colors hover:border-ink"
+              >
+                Get in touch
+              </Link>
+              <span className="ml-1 font-mono text-sm text-ink-faint">
+                {profile.stats.shipped} shipped · {profile.stats.commits} commits · {profile.stats.liveOnWeb} live
+              </span>
+            </div>
+          </Reveal>
+        </div>
+
+        <Reveal delay={0.1} className="lg:justify-self-end">
+          <DeployStream />
         </Reveal>
       </section>
 
@@ -70,7 +63,7 @@ export default function Home() {
       >
         <Reveal>
           <div className="flex items-baseline justify-between">
-            <h2 id="selected-builds-heading" className="font-display text-section text-ink">
+            <h2 id="selected-builds-heading" className="font-display text-section font-semibold text-ink">
               Selected builds
             </h2>
             <Link
@@ -86,7 +79,7 @@ export default function Home() {
 
       <section className="mx-auto max-w-5xl px-6 pb-16 sm:px-10" aria-labelledby="about-teaser-heading">
         <Reveal>
-          <div className="flex flex-col items-start gap-6 rounded-xl border border-rule bg-raised p-6 sm:flex-row sm:items-center sm:gap-8 sm:p-8">
+          <div className="flex flex-col items-start gap-6 rounded-2xl border border-rule bg-raised p-6 sm:flex-row sm:items-center sm:gap-8 sm:p-8">
             <img
               src="/photos/home.webp"
               width="480"
@@ -97,7 +90,7 @@ export default function Home() {
               decoding="async"
             />
             <div>
-              <h2 id="about-teaser-heading" className="font-display text-section text-ink">
+              <h2 id="about-teaser-heading" className="font-display text-section font-semibold text-ink">
                 The person behind the ships
               </h2>
               <p className="mt-2 max-w-[52ch] text-ink-soft">

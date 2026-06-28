@@ -7,9 +7,8 @@ import App from './App.jsx'
 import './styles/tokens.css'
 import './styles/base.css'
 
-// Fonts (self-hosted, only the weights we use) — display / body / mono.
-import '@fontsource/newsreader/400.css'
-import '@fontsource/newsreader/500.css'
+// Fonts (self-hosted) — display (variable grotesque) / body / mono.
+import '@fontsource-variable/bricolage-grotesque'
 import '@fontsource/hanken-grotesk/400.css'
 import '@fontsource/hanken-grotesk/500.css'
 import '@fontsource/jetbrains-mono/400.css'
@@ -28,6 +27,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 // A small hello for the developers who actually open devtools.
 console.log(
   '%cArsenius Audley%c\nFull-stack developer who finishes what he starts.\n\nFound the console — try ⌘K / Ctrl+K anywhere to jump around.\nSource: https://github.com/EevnxyEgo',
-  'font: 500 20px Newsreader, serif; color: #0f6b47;',
-  'font: 13px JetBrains Mono, monospace; color: #5e5749;',
+  'font: 700 20px "Bricolage Grotesque Variable", sans-serif; color: #34d399;',
+  'font: 13px JetBrains Mono, monospace; color: #b3a88f;',
 )

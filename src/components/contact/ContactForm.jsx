@@ -158,7 +158,7 @@ export function ContactForm() {
         <button
           type="submit"
           disabled={status === 'submitting'}
-          className="inline-flex items-center gap-2 rounded-lg border border-ink bg-ink px-5 py-2.5 font-mono text-sm text-paper transition-opacity hover:opacity-90 disabled:opacity-60"
+          className="inline-flex items-center gap-2 rounded-full bg-shipped px-5 py-2.5 font-mono text-sm text-paper transition-transform hover:-translate-y-0.5 disabled:opacity-60"
         >
           {status === 'submitting' && <Loader2 size={15} className="animate-spin" aria-hidden="true" />}
           {status === 'submitting' ? 'Sending…' : 'Send message'}
