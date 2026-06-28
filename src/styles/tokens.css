@@ -29,3 +29,21 @@
   --text-section: clamp(1.7rem, 1.2rem + 1.8vw, 2.4rem);
   --text-section--line-height: 1.1;
 }
+
+/*
+  Light theme — the warm daylight variant of Night Shipyard. Same grotesque type and jade
+  signal, just inverted; deeper jade/amber so accents stay AA on a light ground.
+  Unlayered so it overrides the @theme (dark) defaults when [data-theme='light'] is set.
+*/
+:root[data-theme='light'] {
+  --color-paper: #f3efe4;
+  --color-raised: #fbf8f0;
+  --color-ink: #1c1a14;
+  --color-ink-soft: #57503f;
+  --color-ink-faint: #6b6450;
+  --color-shipped: #0e7a52;
+  --color-shipped-bright: #16a66e;
+  --color-amber: #9c6412;
+  --color-rule: #e2dccc;
+  --color-alert: #a83a1f;
+}

@@ -17,6 +17,7 @@ export const profile = {
     linkedin: 'https://www.linkedin.com/in/arsenius-audley-wahyu-djatmiko-7a8830251/',
     resume:
       'https://drive.google.com/file/d/1l8BBd_3rnd9cSryKNWSWa7KgHxOlJ_Cd/view?usp=sharing',
+    cv: '/arsenius-audley-cv.pdf',
     instagram: 'https://instagram.com/arsen.audley',
   },
   // Real, verifiable headline figures (no invented metrics).

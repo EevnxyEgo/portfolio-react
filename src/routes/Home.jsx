@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, ArrowDown } from 'lucide-react'
 import { SeoHead } from '../components/primitives/SeoHead.jsx'
 import { Reveal } from '../components/primitives/Reveal.jsx'
+import { Magnetic } from '../components/primitives/Magnetic.jsx'
 import { DeployStream } from '../components/shiplog/DeployStream.jsx'
 import { SelectedBuilds } from '../components/work/SelectedBuilds.jsx'
 import { profile } from '../data/profile.js'
@@ -11,54 +12,74 @@ export default function Home() {
     <>
       <SeoHead path="/" />
 
-      <section className="relative mx-auto grid max-w-6xl items-center gap-12 px-6 pb-16 pt-14 sm:px-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12 lg:pb-24 lg:pt-20">
-        <div>
-          <Reveal>
+      <section className="relative px-6 pb-16 pt-12 sm:px-10 lg:px-14 lg:pb-24 lg:pt-16">
+        <div className="mx-auto max-w-[1500px]">
+          <Reveal immediate>
             <p className="inline-flex items-center gap-2 font-mono text-sm text-shipped">
               <span className="h-2 w-2 rounded-full bg-shipped-bright" aria-hidden="true" />
               open to work — {profile.locationNote}
             </p>
           </Reveal>
 
-          <Reveal delay={0.06}>
-            <h1 className="mt-5 font-display text-display font-bold leading-[0.98] tracking-[-0.02em] text-ink">
-              Full-stack developer who{' '}
-              <span className="text-shipped">finishes</span> what he starts.
+          <Reveal immediate delay={0.06}>
+            <h1 className="mt-5 max-w-[15ch] font-display text-[clamp(2.8rem,1rem+7.4vw,7.5rem)] font-bold leading-[0.92] tracking-[-0.03em] text-ink">
+              Full-stack developer who <span className="text-shipped">finishes</span> what he starts.
             </h1>
           </Reveal>
 
-          <Reveal delay={0.12}>
-            <p className="mt-6 max-w-[48ch] text-lg leading-relaxed text-ink-soft">{profile.intro}</p>
-          </Reveal>
+          <div className="mt-9 grid gap-10 lg:mt-11 lg:grid-cols-[1fr_minmax(440px,40%)] lg:items-start lg:gap-16">
+            <div>
+              <Reveal immediate delay={0.1}>
+                <p className="max-w-[46ch] text-lg leading-relaxed text-ink-soft">{profile.intro}</p>
+              </Reveal>
 
-          <Reveal delay={0.18}>
-            <div className="mt-8 flex flex-wrap items-center gap-3">
-              <Link
-                to="/work"
-                className="inline-flex items-center gap-2 rounded-full bg-shipped px-5 py-2.5 font-mono text-sm text-paper transition-transform hover:-translate-y-0.5"
-              >
-                See the work <ArrowRight size={15} aria-hidden="true" />
-              </Link>
-              <Link
-                to="/contact"
-                className="inline-flex items-center gap-2 rounded-full border border-ink-soft px-5 py-2.5 font-mono text-sm text-ink transition-colors hover:border-ink"
-              >
-                Get in touch
-              </Link>
-              <span className="ml-1 font-mono text-sm text-ink-faint">
-                {profile.stats.shipped} shipped · {profile.stats.commits} commits · {profile.stats.liveOnWeb} live
-              </span>
+              <Reveal immediate delay={0.16}>
+                <div className="mt-7 flex flex-wrap items-center gap-3">
+                  <Magnetic strength={0.25}>
+                    <Link
+                      to="/work"
+                      className="inline-flex items-center gap-2 rounded-full bg-shipped px-5 py-2.5 font-mono text-sm text-paper transition-transform hover:-translate-y-0.5"
+                    >
+                      See the work <ArrowRight size={15} aria-hidden="true" />
+                    </Link>
+                  </Magnetic>
+                  <Magnetic strength={0.25}>
+                    <a
+                      href={profile.links.cv}
+                      download
+                      className="inline-flex items-center gap-2 rounded-full border border-ink-soft px-5 py-2.5 font-mono text-sm text-ink transition-colors hover:border-ink"
+                    >
+                      Download CV <ArrowDown size={15} aria-hidden="true" />
+                    </a>
+                  </Magnetic>
+                  <Magnetic strength={0.25}>
+                    <Link
+                      to="/contact"
+                      className="inline-flex items-center gap-2 rounded-full border border-rule px-5 py-2.5 font-mono text-sm text-ink-soft transition-colors hover:border-ink-faint hover:text-ink"
+                    >
+                      Get in touch
+                    </Link>
+                  </Magnetic>
+                </div>
+              </Reveal>
+
+              <Reveal immediate delay={0.2}>
+                <p className="mt-6 font-mono text-sm text-ink-faint">
+                  {profile.stats.shipped} shipped · {profile.stats.commits} commits ·{' '}
+                  {profile.stats.liveOnWeb} live
+                </p>
+              </Reveal>
             </div>
-          </Reveal>
-        </div>
 
-        <Reveal delay={0.1} className="lg:justify-self-end">
-          <DeployStream />
-        </Reveal>
+            <Reveal immediate delay={0.12}>
+              <DeployStream />
+            </Reveal>
+          </div>
+        </div>
       </section>
 
       <section
-        className="mx-auto max-w-5xl px-6 pb-10 sm:px-10"
+        className="mx-auto max-w-6xl px-6 pb-12 sm:px-10 lg:px-14"
         aria-labelledby="selected-builds-heading"
       >
         <Reveal>
@@ -77,7 +98,7 @@ export default function Home() {
         <SelectedBuilds />
       </section>
 
-      <section className="mx-auto max-w-5xl px-6 pb-16 sm:px-10" aria-labelledby="about-teaser-heading">
+      <section className="mx-auto max-w-6xl px-6 pb-16 sm:px-10 lg:px-14" aria-labelledby="about-teaser-heading">
         <Reveal>
           <div className="flex flex-col items-start gap-6 rounded-2xl border border-rule bg-raised p-6 sm:flex-row sm:items-center sm:gap-8 sm:p-8">
             <img

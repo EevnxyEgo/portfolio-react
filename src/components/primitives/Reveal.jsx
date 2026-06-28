@@ -1,9 +1,10 @@
 import { motion } from 'motion/react'
 import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion.js'
 
-// A scroll-into-view fade + lift. Under reduced motion it renders a plain element with
-// no transform or opacity animation, so content is immediately visible.
-export function Reveal({ children, as = 'div', delay = 0, y = 16, className, ...rest }) {
+// A fade + lift. By default it reveals on scroll-into-view; pass `immediate` for
+// above-the-fold content (e.g. the hero) so it animates on mount and can never get
+// stuck invisible if it isn't scrolled to. Reduced motion renders a plain element.
+export function Reveal({ children, as = 'div', delay = 0, y = 16, immediate = false, className, ...rest }) {
   const reduced = usePrefersReducedMotion()
 
   if (reduced) {
@@ -16,12 +17,18 @@ export function Reveal({ children, as = 'div', delay = 0, y = 16, className, ...
   }
 
   const MotionTag = motion[as] || motion.div
+  const motionProps = immediate
+    ? { initial: { opacity: 0, y }, animate: { opacity: 1, y: 0 } }
+    : {
+        initial: { opacity: 0, y },
+        whileInView: { opacity: 1, y: 0 },
+        viewport: { once: true, margin: '0px 0px -12% 0px' },
+      }
+
   return (
     <MotionTag
       className={className}
-      initial={{ opacity: 0, y }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '0px 0px -12% 0px' }}
+      {...motionProps}
       transition={{ duration: 0.5, delay, ease: [0.22, 1, 0.36, 1] }}
       {...rest}
     >
