@@ -49,3 +49,5 @@ coverage/
 /*-mobile.png
 /task*.png
 .raw-images/
+
+.vercel
