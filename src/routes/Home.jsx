@@ -5,6 +5,9 @@ import { Reveal } from '../components/primitives/Reveal.jsx'
 import { Magnetic } from '../components/primitives/Magnetic.jsx'
 import { DeployStream } from '../components/shiplog/DeployStream.jsx'
 import { SelectedBuilds } from '../components/work/SelectedBuilds.jsx'
+import { StatementBeat } from '../components/home/StatementBeat.jsx'
+import { Expertise } from '../components/home/Expertise.jsx'
+import { WhatsNext } from '../components/home/WhatsNext.jsx'
 import { profile } from '../data/profile.js'
 
 export default function Home() {
@@ -78,8 +81,10 @@ export default function Home() {
         </div>
       </section>
 
+      <StatementBeat />
+
       <section
-        className="mx-auto max-w-6xl px-6 pb-12 sm:px-10 lg:px-14"
+        className="mx-auto max-w-6xl px-6 pb-12 pt-20 sm:px-10 lg:px-14 lg:pt-28"
         aria-labelledby="selected-builds-heading"
       >
         <Reveal>
@@ -97,6 +102,8 @@ export default function Home() {
         </Reveal>
         <SelectedBuilds />
       </section>
+
+      <Expertise />
 
       <section className="mx-auto max-w-6xl px-6 pb-16 sm:px-10 lg:px-14" aria-labelledby="about-teaser-heading">
         <Reveal>
@@ -130,6 +137,8 @@ export default function Home() {
           </div>
         </Reveal>
       </section>
+
+      <WhatsNext />
     </>
   )
 }
