@@ -32,6 +32,7 @@ export function SelectedBuilds() {
           <Link
             to={`/work/${cs.slug}`}
             data-cursor-label="view"
+            data-accent={cs.accent}
             onMouseEnter={() => setActive(i)}
             onMouseLeave={() => setActive((a) => (a === i ? null : a))}
             className={cn(
@@ -46,10 +47,10 @@ export function SelectedBuilds() {
                   {cs.name}
                 </h3>
                 <p className="mt-2.5 font-mono text-xs text-ink-soft sm:text-sm">{cs.tagline}</p>
-                <p className="mt-1 font-mono text-xs text-shipped sm:hidden">{cs.hoverMetric}</p>
+                <p className="mt-1 font-mono text-xs text-accent sm:hidden">{cs.hoverMetric}</p>
               </div>
               <div className="hidden shrink-0 items-center gap-3 sm:flex">
-                <span className="font-mono text-xs text-shipped opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <span className="font-mono text-xs text-accent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                   {cs.hoverMetric}
                 </span>
                 <span
@@ -69,6 +70,7 @@ export function SelectedBuilds() {
         {showPreview && (
           <motion.div
             aria-hidden="true"
+            data-accent={preview.accent}
             className="pointer-events-none fixed left-0 top-0 z-30 hidden w-[clamp(260px,22vw,360px)] sm:block"
             style={{ x: px, y: py, translateX: '28px', translateY: '-50%' }}
             initial={{ opacity: 0, scale: 0.92 }}
@@ -76,7 +78,7 @@ export function SelectedBuilds() {
             exit={{ opacity: 0, scale: 0.92 }}
             transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="overflow-hidden rounded-xl border border-rule shadow-2xl shadow-black/50">
+            <div className="overflow-hidden rounded-xl border border-accent shadow-2xl shadow-black/50">
               <img
                 src={preview.cover.src}
                 alt=""

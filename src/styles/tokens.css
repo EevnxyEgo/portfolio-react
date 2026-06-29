@@ -28,6 +28,7 @@
   --accent-reel: #e6a23c; /* cinematic gold */
   --accent-playground: #6aa9f0; /* blueprint azure (~7.7:1 on base) */
   --accent-jobfit: #34d399; /* privacy jade */
+  --accent-3d: #e0795a; /* warm terracotta — Real-time 3D domain world */
 
   /* Type — characterful grotesque display, no default serif */
   --font-display: "Bricolage Grotesque Variable", ui-sans-serif, system-ui, sans-serif;
@@ -62,6 +63,7 @@
   --accent-reel: #9c6412;
   --accent-playground: #155ab5;
   --accent-jobfit: #0e7a52;
+  --accent-3d: #a83a1f;
 }
 
 /*
@@ -76,4 +78,15 @@
 }
 [data-accent='jobfit'] {
   --color-accent: var(--accent-jobfit);
+}
+
+/* Home "domain worlds" reuse the same accent mechanism (web stays default jade). */
+[data-accent='ml'] {
+  --color-accent: var(--accent-playground);
+}
+[data-accent='cv'] {
+  --color-accent: var(--color-amber);
+}
+[data-accent='3d'] {
+  --color-accent: var(--accent-3d);
 }
