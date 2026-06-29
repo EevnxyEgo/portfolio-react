@@ -27,7 +27,7 @@ function WorkCard({ cs }) {
               alt={cs.cover.alt}
               loading="lazy"
               decoding="async"
-              className="h-full w-full object-cover object-top opacity-70 grayscale transition duration-500 group-hover:scale-[1.03] group-hover:opacity-100 group-hover:grayscale-0"
+              className="h-full w-full object-cover object-top opacity-70 grayscale transition duration-500 group-hover:opacity-100 group-hover:grayscale-0"
             />
           ) : (
             <div className="flex h-full items-center justify-center">
