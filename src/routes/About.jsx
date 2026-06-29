@@ -2,8 +2,8 @@ import { Link } from 'react-router-dom'
 import { SeoHead } from '../components/primitives/SeoHead.jsx'
 import { Reveal } from '../components/primitives/Reveal.jsx'
 import { Tag } from '../components/primitives/Tag.jsx'
-import { ExperienceList } from '../components/about/ExperienceList.jsx'
-import { experience, education, credentials } from '../data/experience.js'
+import { CommitGraph } from '../components/about/CommitGraph.jsx'
+import { timeline, credentials } from '../data/experience.js'
 
 const RANGE = ['Web', 'Machine learning', 'Computer vision', 'Real-time 3D']
 
@@ -65,7 +65,7 @@ export default function About() {
                 <p className="text-ink">
                   If you&rsquo;re hiring, or you have something that needs to actually get built and
                   shipped, I&rsquo;m{' '}
-                  <Link to="/contact" className="text-shipped underline-offset-4 hover:underline">
+                  <Link to="/contact" className="text-shipped underline underline-offset-4 transition-opacity hover:opacity-80">
                     open to work
                   </Link>
                   .
@@ -87,50 +87,20 @@ export default function About() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-3xl px-6 pb-10 sm:px-10" aria-labelledby="experience-heading">
+      <section className="mx-auto max-w-3xl px-6 pb-16 pt-4 sm:px-10" aria-labelledby="history-heading">
         <Reveal>
-          <h2 id="experience-heading" className="font-display text-section text-ink">
-            Experience
+          <p className="font-mono text-xs tracking-[0.1em] text-shipped">git log --author=arsenius</p>
+          <h2 id="history-heading" className="mt-2 font-display text-section text-ink">
+            How I got here
           </h2>
+          <p className="mt-3 max-w-[56ch] text-ink-soft">
+            Study on <span className="font-mono text-sm text-ink">main</span>, real work on the
+            branches, and the awards and certs as tags — the same way I track everything else.
+          </p>
         </Reveal>
-        <ExperienceList items={experience} />
-      </section>
-
-      <section className="mx-auto max-w-3xl px-6 pb-10 sm:px-10" aria-labelledby="education-heading">
-        <Reveal>
-          <h2 id="education-heading" className="font-display text-section text-ink">
-            Education
-          </h2>
-        </Reveal>
-        <ExperienceList items={education} />
-      </section>
-
-      <section className="mx-auto max-w-3xl px-6 pb-14 sm:px-10" aria-labelledby="credentials-heading">
-        <Reveal>
-          <h2 id="credentials-heading" className="font-display text-section text-ink">
-            Achievements and certifications
-          </h2>
-        </Reveal>
-        <Reveal delay={0.05}>
-          <div className="mt-6 grid gap-8 sm:grid-cols-2">
-            <ul className="flex flex-col gap-3">
-              {credentials.achievements.map((a) => (
-                <li key={a} className="flex gap-2.5 text-ink-soft">
-                  <span aria-hidden="true" className="mt-2 h-1 w-1 shrink-0 rounded-full bg-shipped" />
-                  <span>{a}</span>
-                </li>
-              ))}
-            </ul>
-            <ul className="flex flex-col gap-3">
-              {credentials.certifications.map((c) => (
-                <li key={c} className="flex gap-2.5 text-ink-soft">
-                  <span aria-hidden="true" className="mt-2 h-1 w-1 shrink-0 rounded-full bg-ink-faint" />
-                  <span>{c}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </Reveal>
+        <div className="mt-10">
+          <CommitGraph items={timeline} certifications={credentials.certifications} />
+        </div>
       </section>
     </>
   )
