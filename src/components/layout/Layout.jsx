@@ -27,7 +27,9 @@ export function Layout() {
       </a>
       <Header onOpenCommand={openPalette} />
       <main id="main">
-        <Suspense fallback={<div className="min-h-[60vh]" aria-hidden="true" />}>
+        {/* Reserve a full viewport so the footer starts below the fold while a lazy route
+            loads — otherwise the fallback→content swap shifts the footer (CLS). */}
+        <Suspense fallback={<div className="min-h-screen" aria-hidden="true" />}>
           <Outlet />
         </Suspense>
       </main>
