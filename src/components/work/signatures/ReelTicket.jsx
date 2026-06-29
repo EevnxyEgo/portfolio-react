@@ -87,7 +87,7 @@ function Seat({ id, state, onToggle }) {
       onClick={() => onToggle(id)}
       data-cursor-label={taken ? undefined : 'pick'}
       className={cn(
-        'h-6 w-6 rounded-[5px] border font-mono text-[9px] transition-colors sm:h-7 sm:w-7',
+        'h-7 w-7 rounded-[5px] border font-mono text-[10px] transition-colors',
         taken && 'cursor-not-allowed border-rule bg-transparent text-ink-faint/40',
         state === 'available' && 'border-rule text-ink-faint hover:border-accent hover:text-ink',
         state === 'selected' && 'border-accent bg-accent text-paper',

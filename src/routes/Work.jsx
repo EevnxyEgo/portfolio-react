@@ -56,7 +56,7 @@ function WorkCard({ cs }) {
             </span>
           </div>
           <p className="mt-2 text-sm text-ink-soft">{cs.tagline}</p>
-          <p className="mt-3 font-mono text-xs text-accent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+          <p className="mt-3 font-mono text-xs text-accent opacity-100 transition-opacity duration-300 sm:opacity-0 sm:group-hover:opacity-100">
             {cs.hoverMetric}
           </p>
           <div className="mt-auto flex flex-wrap gap-1.5 pt-4">

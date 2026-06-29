@@ -12,8 +12,8 @@ function Node({ title, sub, boundary = false }) {
   return (
     <div
       className={
-        'relative flex-1 rounded-lg border bg-paper px-4 py-3 text-center ' +
-        (boundary ? 'border-accent' : 'border-rule')
+        'relative flex-1 rounded-lg border bg-paper px-4 pb-3 text-center ' +
+        (boundary ? 'border-accent pt-7' : 'border-rule pt-3')
       }
     >
       <p className={'font-mono text-sm ' + (boundary ? 'text-accent' : 'text-ink')}>{title}</p>
