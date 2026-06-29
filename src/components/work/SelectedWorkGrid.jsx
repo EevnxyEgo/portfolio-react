@@ -5,11 +5,13 @@ import { selectedWork } from '../../data/projects.js'
 
 const EXTERNAL = { target: '_blank', rel: 'noreferrer' }
 
-// The compact evidence grid for work beyond the three deep case studies.
-export function SelectedWorkGrid() {
+// The compact evidence grid for work beyond the three deep case studies. Takes a pre-filtered
+// `items` list from /work so it shares one filter state. Cards wake to the accent (jade by
+// default — these have no per-project world) on hover.
+export function SelectedWorkGrid({ items = selectedWork }) {
   return (
     <div className="mt-6 grid gap-4 sm:grid-cols-2">
-      {selectedWork.map((item, i) => {
+      {items.map((item, i) => {
         const Wrapper = item.link ? 'a' : 'div'
         const wrapperProps = item.link ? { href: item.link, ...EXTERNAL } : {}
         return (
@@ -17,8 +19,8 @@ export function SelectedWorkGrid() {
             <Wrapper
               {...wrapperProps}
               className={
-                'flex h-full flex-col rounded-xl border border-rule bg-raised p-5 ' +
-                (item.link ? 'group transition-colors hover:border-ink-faint' : '')
+                'flex h-full flex-col rounded-xl border border-rule bg-raised p-5 transition-colors duration-300 ' +
+                (item.link ? 'group hover:border-accent' : '')
               }
             >
               <div className="flex items-start justify-between gap-3">
@@ -27,7 +29,7 @@ export function SelectedWorkGrid() {
                   <ArrowUpRight
                     size={16}
                     aria-hidden="true"
-                    className="mt-1 shrink-0 text-ink-faint transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                    className="mt-1 shrink-0 text-ink-faint transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent"
                   />
                 )}
               </div>
