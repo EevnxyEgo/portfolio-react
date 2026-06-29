@@ -18,6 +18,17 @@
   --color-rule: #2e2a20; /* hairline on dark */
   --color-alert: #e0795a; /* warm terracotta for form validation only */
 
+  /*
+    Per-project accent — the "shifting worlds" device as a single variable. Defaults to the
+    jade signal; a case study sets `data-accent` on its root to swap the whole world's accent.
+    Utilities text-accent / bg-accent / border-accent resolve through this var, so one datum
+    re-tints a page. Accent values below are AA-checked on both themes (token-only rule kept).
+  */
+  --color-accent: var(--color-shipped);
+  --accent-reel: #e6a23c; /* cinematic gold */
+  --accent-playground: #6aa9f0; /* blueprint azure (~7.7:1 on base) */
+  --accent-jobfit: #34d399; /* privacy jade */
+
   /* Type — characterful grotesque display, no default serif */
   --font-display: "Bricolage Grotesque Variable", ui-sans-serif, system-ui, sans-serif;
   --font-body: "Hanken Grotesk", system-ui, -apple-system, sans-serif;
@@ -46,4 +57,23 @@
   --color-amber: #9c6412;
   --color-rule: #e2dccc;
   --color-alert: #a83a1f;
+
+  /* Per-project accents, deepened so each stays AA on the light ground. */
+  --accent-reel: #9c6412;
+  --accent-playground: #155ab5;
+  --accent-jobfit: #0e7a52;
+}
+
+/*
+  Each case study sets data-accent on its root to enter that project's "world". The override
+  cascades into text-accent / bg-accent / border-accent for everything inside the subtree.
+*/
+[data-accent='reel'] {
+  --color-accent: var(--accent-reel);
+}
+[data-accent='playground'] {
+  --color-accent: var(--accent-playground);
+}
+[data-accent='jobfit'] {
+  --color-accent: var(--accent-jobfit);
 }

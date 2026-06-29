@@ -1,24 +1,31 @@
 import { useParams, Navigate, Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import { SeoHead } from '../components/primitives/SeoHead.jsx'
-import { Reveal } from '../components/primitives/Reveal.jsx'
 import { Rule } from '../components/primitives/Rule.jsx'
 import { CaseStudyHero } from '../components/work/CaseStudyHero.jsx'
-import { BuildSequence } from '../components/work/BuildSequence.jsx'
-import { ResultPanel } from '../components/work/ResultPanel.jsx'
-import { JobFitVisual } from '../components/work/JobFitVisual.jsx'
+import { ProseBlock } from '../components/work/blocks/ProseBlock.jsx'
+import { GalleryBlock } from '../components/work/blocks/GalleryBlock.jsx'
+import { BuildLogBlock } from '../components/work/blocks/BuildLogBlock.jsx'
+import { SignatureBlock } from '../components/work/blocks/SignatureBlock.jsx'
+import { ShipLog } from '../components/work/blocks/ShipLog.jsx'
+import { MetricBand } from '../components/work/blocks/MetricBand.jsx'
 import { caseStudies } from '../data/projects.js'
 
-// Each section is numbered because problem → build → ship → result is a genuine sequence
-// (the deployment arc) — the one place numbering is earned.
-function Section({ kicker, title, children }) {
-  return (
-    <Reveal as="section" className="mx-auto max-w-3xl px-6 py-10 sm:px-10">
-      <p className="font-mono text-xs tracking-[0.1em] text-shipped">{kicker}</p>
-      <h2 className="mt-2 font-display text-section text-ink">{title}</h2>
-      <div className="mt-5">{children}</div>
-    </Reveal>
-  )
+// Renders one story block. Each project orders its own blocks (see projects.js → story[]),
+// so no two case studies share a section sequence — that's the anti-template move.
+function StoryBlock({ block, project }) {
+  switch (block.type) {
+    case 'prose':
+      return <ProseBlock kicker={block.kicker} title={block.title} body={project[block.from]} />
+    case 'gallery':
+      return <GalleryBlock kicker={block.kicker} title={block.title} images={project[block.from]} />
+    case 'buildLog':
+      return <BuildLogBlock kicker={block.kicker} title={block.title} beats={project.build} />
+    case 'signature':
+      return <SignatureBlock kind={block.kind} />
+    default:
+      return null
+  }
 }
 
 export default function CaseStudy() {
@@ -33,39 +40,19 @@ export default function CaseStudy() {
     <>
       <SeoHead title={project.name} description={project.tagline} path={`/work/${project.slug}`} />
 
-      <article className="pb-8">
-        <div className="mx-auto max-w-3xl px-6 pt-12 sm:px-10 sm:pt-16">
-          <CaseStudyHero project={project} />
-        </div>
+      {/* data-accent enters this project's "world": text-accent / bg-accent / border-accent
+          throughout the page resolve to the project's colour. */}
+      <article data-accent={project.accent} className="pb-8">
+        <CaseStudyHero project={project} />
 
-        <div className="mx-auto mt-10 max-w-4xl px-6 sm:px-10">
-          {project.cover ? (
-            <img
-              src={project.cover.src}
-              alt={project.cover.alt}
-              className="w-full rounded-xl border border-rule"
-              decoding="async"
-            />
-          ) : project.designedVisual === 'jobfit-boundary' ? (
-            <JobFitVisual />
-          ) : null}
-        </div>
+        {/* the variable middle — each project's own ordered story + its one signature */}
+        {project.story.map((block, i) => (
+          <StoryBlock key={i} block={block} project={project} />
+        ))}
 
-        <Section kicker="01 · problem" title="The problem">
-          <p className="text-lg leading-relaxed text-ink-soft">{project.problem}</p>
-        </Section>
-
-        <Section kicker="02 · build" title="The build">
-          <BuildSequence repo={project.repo} beats={project.build} />
-        </Section>
-
-        <Section kicker="03 · ship" title="The ship">
-          <p className="text-lg leading-relaxed text-ink-soft">{project.ship}</p>
-        </Section>
-
-        <Section kicker="04 · result" title="The result">
-          <ResultPanel result={project.result} gallery={project.gallery} />
-        </Section>
+        {/* the shared evidence spine — the git thesis, on every project */}
+        <ShipLog repo={project.repo} />
+        <MetricBand summary={project.result.summary} metrics={project.result.metrics} />
 
         <div className="mx-auto max-w-3xl px-6 py-8 sm:px-10">
           <Rule />
@@ -73,7 +60,7 @@ export default function CaseStudy() {
             <p className="max-w-[34ch] font-display text-2xl text-ink">{project.cta}</p>
             <Link
               to="/contact"
-              className="mt-4 inline-flex items-center gap-2 font-mono text-sm text-shipped transition-opacity hover:opacity-80"
+              className="mt-4 inline-flex items-center gap-2 font-mono text-sm text-accent transition-opacity hover:opacity-80"
             >
               Arsenius is open to work <ArrowRight size={15} aria-hidden="true" />
             </Link>
@@ -81,9 +68,10 @@ export default function CaseStudy() {
 
           <Link
             to={`/work/${next.slug}`}
+            data-cursor-label="next"
             className="group mt-4 flex items-center justify-between gap-4 rounded-xl border border-rule p-5 transition-colors hover:border-ink-faint"
           >
-            <span className="font-mono text-xs text-ink-faint">next case study</span>
+            <span className="font-mono text-xs text-ink-faint">next build</span>
             <span className="inline-flex items-center gap-2 font-display text-xl text-ink">
               {next.name}
               <ArrowRight

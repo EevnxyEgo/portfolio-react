@@ -75,6 +75,24 @@ html.has-custom-cursor [contenteditable='true'] {
   cursor: auto !important;
 }
 
+/*
+  Render-flash — used by the React Playground case-study signature to flash a component the
+  instant it re-renders (a faithful echo of the app's real useRenderFlash hook). Colour comes
+  from the active accent var, so it stays token-driven. Under reduced motion the flash is
+  suppressed by the block below; the visible "rendered ×N" count is the no-motion signal.
+*/
+@keyframes render-flash {
+  0% {
+    background-color: color-mix(in srgb, var(--color-accent) 32%, transparent);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+.render-flash {
+  animation: render-flash 0.6s ease-out;
+}
+
 /* Respect reduced motion globally; component motion also checks this in JS. */
 @media (prefers-reduced-motion: reduce) {
   html {
